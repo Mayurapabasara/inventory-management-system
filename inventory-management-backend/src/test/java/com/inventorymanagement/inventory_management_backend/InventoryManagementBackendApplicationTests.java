@@ -1,10 +1,10 @@
-package backend.demo;
+package com.inventorymanagement.inventory_management_backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class InventoryManagementBackendApplicationTests {
 
 	@Test
 	void contextLoads() {
