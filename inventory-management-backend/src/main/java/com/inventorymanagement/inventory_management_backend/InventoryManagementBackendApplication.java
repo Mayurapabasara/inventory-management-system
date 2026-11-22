@@ -1,13 +1,13 @@
-package backend.demo;
+package com.inventorymanagement.inventory_management_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class InventoryManagementBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(InventoryManagementBackendApplication.class, args);
 	}
 
 }
