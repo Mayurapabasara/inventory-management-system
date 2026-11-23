@@ -1,12 +1,14 @@
 import React from "react";
-import { Roouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Home from "./componet/Home/Home";
+import Item from "./componet/Item/Item";
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/addItem" element={<ItemAdd/>}/>
+        <Route path="/addItem" element={<Item/>}/>
       </Routes>
     </div>
   );
