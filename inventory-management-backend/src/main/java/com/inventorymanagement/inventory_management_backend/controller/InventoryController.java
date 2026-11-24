@@ -96,7 +96,15 @@ public class InventoryController {
 
     @PutMapping("/inventory/{id}")
     public InventoryModel updateInventoryModel(@PathVariable Long id, @RequestBody InventoryModel newInventoryModel) {
-
+        return inventoryRepository.findById(id)
+                .map(inventoryModel -> {
+                    inventoryModel.setItemImage(newInventoryModel.getItemImage());
+                    inventoryModel.setItemName(newInventoryModel.getItemName());
+                    inventoryModel.setItemCategory(newInventoryModel.getItemCategory());
+                    inventoryModel.setItemDetails(newInventoryModel.getItemDetails());
+                    return inventoryRepository.save(inventoryModel);
+                })
+                .orElseThrow(() -> new InventoryNotFoundException(id));
     }
 
 }
