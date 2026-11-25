@@ -116,19 +116,19 @@ export default function UpdateItem() {
 
     return (
 
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center p-5">
+        <div className="page page-form">
 
-            <div className="bg-white w-full max-w-lg p-8 rounded-lg shadow-md">
+            <div className="update-container">
 
-                <h1 className="text-2xl font-bold mb-6">
+                <h1 className="update-title">
                     Update Inventory Item
                 </h1>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="form-card">
 
                     {/* Item Name */}
                     <div>
-                        <label className="block mb-2 font-medium">
+                        <label >
                             Item Name
                         </label>
 
@@ -137,14 +137,14 @@ export default function UpdateItem() {
                             name="itemName"
                             value={item.itemName}
                             onChange={handleChange}
-                            className="w-full border rounded-md p-3"
+                            
                             required
                         />
                     </div>
 
                     {/* Item Category */}
                     <div>
-                        <label className="block mb-2 font-medium">
+                        <label >
                             Item Category
                         </label>
 
@@ -153,14 +153,14 @@ export default function UpdateItem() {
                             name="itemCategory"
                             value={item.itemCategory}
                             onChange={handleChange}
-                            className="w-full border rounded-md p-3"
+                            
                             required
                         />
                     </div>
 
                     {/* Item Details */}
                     <div>
-                        <label className="block mb-2 font-medium">
+                        <label >
                             Item Details
                         </label>
 
@@ -169,14 +169,14 @@ export default function UpdateItem() {
                             value={item.itemDetails}
                             onChange={handleChange}
                             rows="4"
-                            className="w-full border rounded-md p-3"
+                            
                             required
                         />
                     </div>
 
                     {/* Current Image */}
                     <div>
-                        <label className="block mb-2 font-medium">
+                        <label >
                             Current Image
                         </label>
 
@@ -184,14 +184,14 @@ export default function UpdateItem() {
                             <img
                                 src={`http://localhost:8080/upload/${encodeURIComponent(item.itemImage)}`}
                                 alt={item.itemName}
-                                className="w-32 h-32 object-contain border rounded-md"
+                                className="current-image"
                             />
                         )}
                     </div>
 
                     {/* New Image */}
                     <div>
-                        <label className="block mb-2 font-medium">
+                        <label >
                             Change Image
                         </label>
 
@@ -199,21 +199,21 @@ export default function UpdateItem() {
                             type="file"
                             accept="image/*"
                             onChange={handleFileChange}
-                            className="w-full border rounded-md p-3"
+                            
                         />
 
-                        <p className="text-sm text-gray-500 mt-1">
+                        <p className="form-hint">
                             Leave empty to keep the current image.
                         </p>
                     </div>
 
                     {/* Buttons */}
-                    <div className="flex gap-3 pt-4">
+                    <div className="form-actions">
 
                         <button
                             type="submit"
                             disabled={saving}
-                            className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white p-3 rounded-md"
+                            className="button button-primary"
                         >
                             {saving ? 'Updating...' : 'Update Item'}
                         </button>
@@ -221,7 +221,7 @@ export default function UpdateItem() {
                         <button
                             type="button"
                             onClick={() => navigate('/')}
-                            className="w-full bg-gray-200 hover:bg-gray-300 p-3 rounded-md"
+                            className="button button-secondary"
                         >
                             Cancel
                         </button>

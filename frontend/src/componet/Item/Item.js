@@ -60,11 +60,11 @@ export default function Item() {
 
 
   return (
-    <div>
+    <main className="page page-form">
       <div>
-        <h1> Add Inventory Item </h1>
+        <div className="page-heading"><div><p className="eyebrow">INVENTORY MANAGEMENT</p><h1>Add Inventory Item</h1><p>Enter the details for your new item.</p></div></div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-card">
           <div>
             <label>Item Name:</label>
             <input type="text" name="itemName" value={item.itemName} onChange={handleChange} required />
@@ -85,10 +85,10 @@ export default function Item() {
             <input type="file" accept="image/*" onChange={handleFileChange} />
           </div>
 
-          <button type="submit">Add Item</button>
-          <button type="button" onClick={() => window.location.href = '/'}>Cancel</button>
+          <button className="button button-primary" type="submit">Add Item</button>
+          <button className="button button-secondary" type="button" onClick={() => window.location.href = '/'}>Cancel</button>
         </form>
       </div>
-    </div>
+    </main>
   )
 }
