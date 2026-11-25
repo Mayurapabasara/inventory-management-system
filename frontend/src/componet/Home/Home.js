@@ -29,6 +29,7 @@ export default function Home() {
               <th>Name</th>
               <th>Category</th>
               <th>Description</th>
+              <th>Actions</th>
             </tr>
           </thead>
 
@@ -37,10 +38,25 @@ export default function Home() {
             {items.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
-                <td><img src={item.itemImage} alt={item.name} width="100" height="100" /></td>
+                <td>
+                  <img
+                    src={`http://localhost:8080/upload/${encodeURIComponent(item.itemImage)}`}
+                    alt={item.itemName}
+                    width="100"
+                    height="100"
+                  />
+                </td>
                 <td>{item.itemName}</td>
                 <td>{item.itemCategory}</td>
                 <td>{item.itemDetails}</td>
+
+                <td>
+                  <button onClick={() => window.location.href = `/updateItem/${item.id}`}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+                    >
+                  Edit
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
