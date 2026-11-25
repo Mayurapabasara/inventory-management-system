@@ -16,6 +16,28 @@ export default function Home() {
     setItems(result.data);
   };
 
+  const deleteItem = async (id) => {
+
+    const confirmDelete = window.confirm(
+        "Are you sure you want to delete this item?"
+    );
+
+    if (confirmDelete) {
+        try {
+            await axios.delete(
+                `http://localhost:8080/inventory/${id}`
+            );
+
+            alert("Item deleted successfully!");
+
+            loadItems();
+
+        } catch (error) {
+            console.error(error);
+            alert("Failed to delete item");
+        }
+    }
+};
 
   return (
     <div>
@@ -55,6 +77,12 @@ export default function Home() {
                     className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
                     >
                   Edit
+                  </button>
+
+                  <button onClick={() => deleteItem(item.id)}
+                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
+                  >
+                    Delete
                   </button>
                 </td>
               </tr>
