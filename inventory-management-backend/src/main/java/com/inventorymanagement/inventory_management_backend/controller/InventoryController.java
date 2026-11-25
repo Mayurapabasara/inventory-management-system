@@ -127,4 +127,16 @@ public class InventoryController {
                 .orElseThrow(() -> new InventoryNotFoundException(id));
     }
 
+    @DeleteMapping("/inventory/{id}")
+    public String deleteInventoryModel(@PathVariable Long id) {
+
+        if (!inventoryRepository.existsById(id)) {
+            throw new InventoryNotFoundException(id);
+        }
+
+        inventoryRepository.deleteById(id);
+
+        return "Inventory item with id " + id + " has been deleted";
+    }
+
 }
