@@ -40,10 +40,14 @@ export default function Home() {
 };
 
   return (
-    <div>
-        <h1>Inventory Items</h1>
+    <main className="page page-wide">
+        <header className="page-heading">
+          <div><p className="eyebrow">INVENTORY MANAGEMENT</p><h1>Inventory Items</h1><p>View and manage your inventory in one place.</p></div>
+          <button className="button button-primary" onClick={() => (window.location.href='/addItem')}>+ Add Item</button>
+        </header>
+        <div className="table-container">
 
-        <table border="1" cellPadding="10" cellSpacing="0">
+        <table>
           <thead>
             <tr>
               <th>ID</th>
@@ -74,13 +78,13 @@ export default function Home() {
 
                 <td>
                   <button onClick={() => window.location.href = `/updateItem/${item.id}`}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+                    className="button button-edit"
                     >
                   Edit
                   </button>
 
                   <button onClick={() => deleteItem(item.id)}
-                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
+                    className="button button-delete"
                   >
                     Delete
                   </button>
@@ -91,10 +95,7 @@ export default function Home() {
         </table>
 
 
-        <button onClick={() => (window.location.href='/addItem')}>Add Item</button>
-
-
-
-    </div>
+        </div>
+    </main>
   )
 }
