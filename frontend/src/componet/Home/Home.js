@@ -37,7 +37,15 @@ export default function Home() {
             {items.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
-                <td><img src={item.itemImage} alt={item.name} width="100" height="100" /></td>
+                {/* <td><img src={item.itemImage} alt={item.name} width="100" height="100" /></td> */}
+                <td>
+                  <img
+                    src={`http://localhost:8080/upload/${encodeURIComponent(item.itemImage)}`}
+                    alt={item.itemName}
+                    width="100"
+                    height="100"
+                  />
+                </td>
                 <td>{item.itemName}</td>
                 <td>{item.itemCategory}</td>
                 <td>{item.itemDetails}</td>
