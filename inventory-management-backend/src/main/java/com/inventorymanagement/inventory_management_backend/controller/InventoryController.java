@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3001")
+@CrossOrigin("http://localhost:3000")
 public class InventoryController {
     @Autowired
     private InventoryRepository inventoryRepository;
@@ -84,13 +84,33 @@ public class InventoryController {
         return inventoryRepository.findById(id).orElseThrow(() -> new InventoryNotFoundException(id));
     }
 
-    private final String UPLOAD_DIR = "src/main/upload";
+//    private final String UPLOAD_DIR = "src/main/upload";
+//    @GetMapping("/upload/{filename}")
+//    public ResponseEntity<FileSystemResource> getFile(@PathVariable String filename) {
+//        File file = new File(UPLOAD_DIR + filename);
+//        if (!file.exists()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(new FileSystemResource(file));
+//    }
+
+    private final String UPLOAD_DIR = "uploads";
+
     @GetMapping("/upload/{filename}")
-    public ResponseEntity<FileSystemResource> getFile(@PathVariable String filename) {
-        File file = new File(UPLOAD_DIR + filename);
-        if (!file.exists()) {
+    public ResponseEntity<FileSystemResource> getFile(
+            @PathVariable String filename) {
+
+        Path directory = Paths.get(UPLOAD_DIR)
+                .toAbsolutePath()
+                .normalize();
+
+        Path file = directory.resolve(filename).normalize();
+
+        if (!file.startsWith(directory)
+                || !Files.isRegularFile(file)) {
             return ResponseEntity.notFound().build();
         }
+
         return ResponseEntity.ok(new FileSystemResource(file));
     }
 
