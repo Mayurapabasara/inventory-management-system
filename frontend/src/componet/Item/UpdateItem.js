@@ -37,7 +37,7 @@ export default function UpdateItem() {
             } catch (error) {
                 console.error(error);
                 alert('Failed to load item');
-                navigate('/');
+                navigate('/inventory');
             }
         };
 
@@ -98,7 +98,7 @@ export default function UpdateItem() {
 
             alert('Item updated successfully!');
 
-            navigate('/');
+            navigate('/inventory');
 
         } catch (error) {
 
@@ -220,7 +220,7 @@ export default function UpdateItem() {
 
                         <button
                             type="button"
-                            onClick={() => navigate('/')}
+                            onClick={() => navigate('/inventory')}
                             className="button button-secondary"
                         >
                             Cancel

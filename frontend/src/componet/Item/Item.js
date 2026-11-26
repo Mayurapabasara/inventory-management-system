@@ -48,7 +48,7 @@ export default function Item() {
       });
 
       alert('Item added successfully');
-      window.location.href = '/';
+      window.location.href = '/inventory';
 
     } catch (error) {
       console.error('Error adding item:', error);
@@ -86,7 +86,7 @@ export default function Item() {
           </div>
 
           <button className="button button-primary" type="submit">Add Item</button>
-          <button className="button button-secondary" type="button" onClick={() => window.location.href = '/'}>Cancel</button>
+          <button className="button button-secondary" type="button" onClick={() => window.location.href = '/inventory'}>Cancel</button>
         </form>
       </div>
     </main>
